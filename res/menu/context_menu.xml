@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.android.ansidev.todolist.MainActivity" >
+    <item
+        android:id="@+id/itemEdit" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:title="@string/cm_Edit">
+    </item>
+    <item
+        android:id="@+id/itemMoveTop" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:title="@string/cm_MoveTop">
+    </item>
+    <item
+        android:id="@+id/itemMoveUp" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:title="@string/cm_MoveUp">
+    </item>
+    <item
+        android:id="@+id/itemMoveDown"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:title="@string/cm_MoveDown">
+    </item>
+    <item
+        android:id="@+id/itemMoveBottom" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:title="@string/cm_MoveBottom">
+    </item>
+    <item
+        android:id="@+id/itemDelete" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:title="@string/cm_Delete">
+    </item>
+</menu>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">To Do List</string>
+    <string name="action_settings">Settings</string>
+    <string name="addItemHint">Enter your task</string>
+	<string name="addItemContentDescription">New Item</string>
+	
+	<string name="cm_Edit">Edit Item</string>
+	<string name="cm_MoveTop">Move to Top</string>
+	<string name="cm_MoveUp">Move Up</string>
+	<string name="cm_MoveDown">Move Down</string>
+	<string name="cm_MoveBottom">Move to Bottom</string>
+	<string name="cm_Delete">Delete Item</string>
+	
+	<string name="om_DeleteAll">Delete All</string>
+	<string name="om_Settings">Settings</string>
+</resources>

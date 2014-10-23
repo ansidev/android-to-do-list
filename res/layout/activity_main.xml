@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.android.ansidev.todolist.MainActivity" >
+
+	<AutoCompleteTextView
+    android:id="@+id/myAutoCompleteTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+	android:hint="@string/addItemHint"
+    android:completionThreshold="1" >
+    <requestFocus />
+	</AutoCompleteTextView>
+
+	<ListView
+	android:id="@+id/myListView"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	/>
+</LinearLayout>
