@@ -15,4 +15,5 @@
 	
 	<string name="om_DeleteAll">Delete All</string>
 	<string name="om_Settings">Settings</string>
+	<string name="om_Exit">Exit</string>
 </resources>

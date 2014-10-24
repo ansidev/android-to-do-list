@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
+//import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+//import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
@@ -29,16 +29,18 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 //import android.widget.TextView;
 //import android.widget.Toast;
 
-public class MainActivity extends Activity implements OnSharedPreferenceChangeListener {
+public class MainActivity extends Activity {
 
+	private static final int SETTINGS_RESULT = 1;
 	ListView mListView;
 	ArrayList<String> toDoListItems;
 	ArrayAdapter<String> arrAdptr, autoArrAdptr;
 	int selectedPosition = -1;
-
+	
 	AutoCompleteTextView mSingleComplete;
 	private final static String[] autoCompleteText = new String[] {
 		"Appointment",
@@ -100,13 +102,20 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 		});
         
 		autoArrAdptr = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, autoCompleteText);
-		mSingleComplete.setAdapter(autoArrAdptr);
-		
-		SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("UserSettings", 0);
-		Editor editor = sharedPref.edit();
-		
+		mSingleComplete.setAdapter(autoArrAdptr);		
 	}
 
+//	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+//		boolean data = sharedPreferences.getBoolean(key, false);
+//		mListView = (ListView) findViewById(R.id.myListView);
+//		if(data) {
+//			mListView.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
+//		}
+//		else {
+//			mListView.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+//		}
+//	}
+	
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 //	    AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item.getMenuInfo();
@@ -187,16 +196,47 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
         		toDoListItems.remove(i);
         	}
         	arrAdptr.notifyDataSetChanged();
-        	return true;
+        	break;
 		case R.id.itemSettings:
-			Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-			startActivityForResult(intent, 100);
-			return true;
+			Intent intent = new Intent(this, SettingsActivity.class);
+//			startActivity(intent);
+			startActivityForResult(intent, SETTINGS_RESULT);
+			Log.i("Event", "Start preference activity");
+			break;
+		case R.id.itemExit:
+			finish();
+			break;
 		default:
-			return super.onOptionsItemSelected(item);
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		switch(requestCode) {
+		case SETTINGS_RESULT:
+			displayUserSettings();
+			break;
+		default:
+			break;
 		}
 	}
 	
+	private void displayUserSettings() {
+		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+		StringBuilder setting = new StringBuilder();
+		setting.append("\nUsername: " + sharedPrefs.getString("prefUsername", null));
+		setting.append("\nSend report: " + sharedPrefs.getBoolean("prefSendReport", false));
+		setting.append("\nSync Frequency: " + sharedPrefs.getString("prefSyncFrequency", null));
+		TextView mSettingsTextView = (TextView) findViewById(R.id.myTextUserSettings);
+		mSettingsTextView.setText(setting.toString());
+	}
+
+
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View view, ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, view, menuInfo);

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="syncFrequency">
+        <item name="1">Automatically</item>
+        <item name="2">Once a day</item>
+        <item name="3">Once a week</item>
+        <item name="4">Once a month</item>
+        <item name="0">Never</item>
+    </string-array>
+    <string-array name="syncFrequencyValues">
+        <item name="1">1</item>
+        <item name="2">2</item>
+        <item name="3">3</item>
+        <item name="4">4</item>
+        <item name="0">0</item>
+    </string-array>
+</resources>

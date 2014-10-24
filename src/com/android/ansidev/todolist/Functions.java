@@ -2,6 +2,7 @@ package com.android.ansidev.todolist;
 
 import java.util.ArrayList;
 
+
 public class Functions {
 	public static void swapItem(ArrayList<String> arrList, int pos1, int pos2) {
 		String temp = arrList.get(pos1);
@@ -37,5 +38,4 @@ public class Functions {
 			return;
 		}
 	}
-
 }
